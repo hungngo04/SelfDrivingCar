@@ -1,6 +1,5 @@
 //draw the road
 const canvas = document.getElementById("myCanvas");
-canvas.height = window.innerHeight;
 canvas.width = 500;
 
 //draw a car
@@ -12,6 +11,7 @@ animate();
 
 function animate(){
     car.update();
+    canvas.height = window.innerHeight;
     car.draw(ctx);
     requestAnimationFrame(animate);
 }
