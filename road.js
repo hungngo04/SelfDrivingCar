@@ -28,7 +28,7 @@ class Road{
     }
 
     draw(ctx){
-        ctx.lineWidth = 5;
+        ctx.lineWidth = 8;
         ctx.strokeStyle = "white";
 
         for(let i = 1; i <= this.lane - 1; i++){
@@ -38,7 +38,7 @@ class Road{
                 i / this.lane
             );
 
-            ctx.setLineDash([20,20]);
+            ctx.setLineDash([40,40]);
             ctx.beginPath();
             ctx.moveTo(x, this.top);
             ctx.lineTo(x, this.bottom);
