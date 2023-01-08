@@ -4,8 +4,8 @@ class Road{
         this.width = width;
         this.lane = lane;
 
-        this.left = x - width / 2;
-        this.right = x + width / 2;
+        this.left = x - width / 2.1; 
+        this.right = x + width / 2.1;
 
         const inf = 1000000;
         this.top = -inf;
