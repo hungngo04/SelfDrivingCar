@@ -12,6 +12,11 @@ class Road{
         this.bottom = inf;
     }
 
+    getLaneCenter(laneIndex){
+        const laneWidth = this.width / this.lane;
+        return this.left + laneWidth / 2 + Math.min(laneIndex, this.lane - 1) * laneWidth;
+    }
+
     draw(ctx){
         ctx.lineWidth = 5;
         ctx.strokeStyle = "white";
