@@ -5,10 +5,10 @@ canvas.width = 500;
 //draw a car
 const ctx = canvas.getContext("2d");
 const road = new Road(canvas.width / 2, canvas.width * 0.98);
-const car = new Car(road.getLaneCenter(2), canvas.width / 2, 30, 50, "mainCar",);
+const car = new Car(road.getLaneCenter(2), canvas.width / 2, 30, 50, "AI",);
 //generate new car on the road
 const traffic = [
-    new Car(road.getLaneCenter(1), -canvas.width / 2, 30, 50, "randomCar", 5.5)
+    new Car(road.getLaneCenter(2), -canvas.width / 2, 30, 50, "randomCar", 5.5)
 ]
 
 //animation
