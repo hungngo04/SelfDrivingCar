@@ -7,7 +7,7 @@ const ctx = canvas.getContext("2d");
 const road = new Road(canvas.width / 2, canvas.width * 0.98);
 
 //generate random cars on the road
-numberOfCar = 200;
+numberOfCar = 1;
 const cars = randomCar(numberOfCar);
 //best car so far
 let bestCar = cars[0];
@@ -17,7 +17,7 @@ if(localStorage.getItem("bestBrain")){
             localStorage.getItem("bestBrain")
         );
         if(i != 0){
-            NeuralNetwork.mutate(cars[i].brain, 0.2);
+            NeuralNetwork.mutate(cars[i].brain, 0.1);
         }
     }
 }
@@ -25,8 +25,17 @@ if(localStorage.getItem("bestBrain")){
 const traffic = [
     new Car(road.getLaneCenter(2), -canvas.width / 2, 30, 50, "randomCar", 5.5),
     new Car(road.getLaneCenter(1), -200, 30, 50, "randomCar", 5.5),
-    new Car(road.getLaneCenter(0), 300, 30, 50, "randomCar", 5.5),
-    new Car(road.getLaneCenter(3), 230, 30, 50, "randomCar", 5.5)
+    new Car(road.getLaneCenter(0), -300, 30, 50, "randomCar", 5.5),
+    new Car(road.getLaneCenter(3), 230, 30, 50, "randomCar", 5.5),
+    new Car(road.getLaneCenter(2), -500, 30, 50, "randomCar", 5.5),
+    new Car(road.getLaneCenter(3), -700, 30, 50, "randomCar", 5.5),
+    new Car(road.getLaneCenter(1), -260, 30, 50, "randomCar", 5.5),
+    new Car(road.getLaneCenter(3), -100, 30, 50, "randomCar", 5.5),
+    new Car(road.getLaneCenter(3), -350, 30, 50, "randomCar", 5.5),
+    new Car(road.getLaneCenter(3), -700, 30, 50, "randomCar", 5.5),
+    new Car(road.getLaneCenter(2), -800, 30, 50, "randomCar", 5.5),
+    new Car(road.getLaneCenter(1), -900, 30, 50, "randomCar", 5.5),
+    
 ]
 
 
