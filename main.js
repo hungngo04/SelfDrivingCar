@@ -6,8 +6,11 @@ canvas.width = 500;
 const ctx = canvas.getContext("2d");
 const road = new Road(canvas.width / 2, canvas.width * 0.98);
 
+//check if user start 
+var isStart = false;
+
 //generate random cars on the road
-numberOfCar = 1;
+numberOfCar = 1000;
 const cars = randomCar(numberOfCar);
 //best car so far
 let bestCar = cars[0];
@@ -38,13 +41,15 @@ const traffic = [
     
 ]
 
+function start(){
+    animate();
+}
 
-//animation
-animate();
 
 function save(){
     localStorage.setItem("bestBrain", JSON.stringify(bestCar.brain));
 }
+
 
 function randomCar(numberOfCar){
     const cars = [];
@@ -54,38 +59,38 @@ function randomCar(numberOfCar){
 }
 
 function animate(){
-    for(let i = 0; i < traffic.length; ++i){
-        traffic[i].update(road.borders, []);
-    }
+        for(let i = 0; i < traffic.length; ++i){
+            traffic[i].update(road.borders, []);
+        }
 
-    for(let i = 0; i < cars.length; ++i)
-        cars[i].update(road.borders, traffic);
+        for(let i = 0; i < cars.length; ++i)
+            cars[i].update(road.borders, traffic);
 
-    bestCar = cars.find(
-        c => c.y == Math.min(
-            ...cars.map(c => c.y)
+        bestCar = cars.find(
+            c => c.y == Math.min(
+                ...cars.map(c => c.y)
+            )
         )
-    )
 
-    canvas.height = window.innerHeight;
+        canvas.height = window.innerHeight;
 
-    ctx.save();
-    ctx.translate(0,-bestCar.y + canvas.height * 0.7);
+        ctx.save();
+        ctx.translate(0,-bestCar.y + canvas.height * 0.7);
 
-    road.draw(ctx);
-    for(let i = 0; i < traffic.length; ++i){
-        traffic[i].draw(ctx, "red");
-    }
-
-
-    ctx.globalAlpha = 0.2;
-    for(let i = 0; i < cars.length; ++i)
-        cars[i].draw(ctx, "green");
-
-    ctx.globalAlpha = 1;
-    bestCar.draw(ctx, "green", true);
+        road.draw(ctx);
+        for(let i = 0; i < traffic.length; ++i){
+            traffic[i].draw(ctx, "red");
+        }
 
 
-    ctx.restore();
-    requestAnimationFrame(animate);
+        ctx.globalAlpha = 0.2;
+        for(let i = 0; i < cars.length; ++i)
+            cars[i].draw(ctx, "green");
+
+        ctx.globalAlpha = 1;
+        bestCar.draw(ctx, "green", true);
+
+
+        ctx.restore();
+        requestAnimationFrame(animate);
 }

@@ -5,9 +5,18 @@
 </head>
 <body>
     <canvas id="myCanvas"></canvas>
-    <div id="buttons">
-        <button onclick="save()">📂</button>
-        <button onclick="discard()">🗑️</button>
+    <div class="container">
+        <div class="howto">
+            <h2>How to train the car</h2>
+            <h5>1. Press "Learn again" to start learning or learn one more time</h5>
+            <h5>2. When the car is good enough for the learning, press "Save progress" to save the learning progress</h5>
+        </div>
+        <div class="buttons">
+            <button onclick="save()">Save progress</button>
+            <button onclick="discard()">Discard</button>
+            <button onclick="start()">Start</button>
+            <button onClick="window.location.reload();">Learn again</button>
+        </div>
     </div>
     <script src="network.js"></script>
     <script src="sensor.js"></script>
