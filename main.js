@@ -12,13 +12,21 @@ const cars = randomCar(numberOfCar);
 //best car so far
 let bestCar = cars[0];
 if(localStorage.getItem("bestBrain")){
-    bestCar.brain = JSON.parse(
-        localStorage.getItem("bestBrain")
-    );
+    for(let i = 0; i < cars.length; ++i){
+        cars[i].brain = JSON.parse(
+            localStorage.getItem("bestBrain")
+        );
+        if(i != 0){
+            NeuralNetwork.mutate(cars[i].brain, 0.2);
+        }
+    }
 }
 //generate new car on the road
 const traffic = [
-    new Car(road.getLaneCenter(2), -canvas.width / 2, 30, 50, "randomCar", 5.5)
+    new Car(road.getLaneCenter(2), -canvas.width / 2, 30, 50, "randomCar", 5.5),
+    new Car(road.getLaneCenter(1), -200, 30, 50, "randomCar", 5.5),
+    new Car(road.getLaneCenter(0), 300, 30, 50, "randomCar", 5.5),
+    new Car(road.getLaneCenter(3), 230, 30, 50, "randomCar", 5.5)
 ]
 
 
